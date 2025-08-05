@@ -50,7 +50,6 @@ public class CourseController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteCourse(@PathVariable int id){
         boolean delete = courseService.deleteCourse(id);
-
         if (delete) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
