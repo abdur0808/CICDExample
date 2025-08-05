@@ -53,7 +53,6 @@ public class CourseController {
         if (delete) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         }
-
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
