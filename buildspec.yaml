@@ -1,6 +1,14 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      java: corretto17
+      docker: 20
+    commands:
+      - echo Installing Maven...
+      - yum install -y maven
+
   pre_build:
     commands:
       - echo Starting pre-build phase...
@@ -10,7 +18,7 @@ phases:
       - REPOSITORY_URI=448214416344.dkr.ecr.eu-west-2.amazonaws.com/course-service-repo
       - aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin $REPOSITORY_URI
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - IMAGE_TAG="build-$(echo $CODEBUILD_BUILD_ID | awk -F':' '{print $2}')"
       - echo IMAGE_TAG=$IMAGE_TAG
 
   build:
