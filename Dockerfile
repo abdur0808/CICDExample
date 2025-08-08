@@ -5,9 +5,9 @@ FROM openjdk:17
 WORKDIR /app
 
 # Copy compiled Java app or source and jar
-COPY ./targer/course-service.jar /app
+COPY ./targer/*.jar /app
 
 # expose the port where spring boot app run
 EXPOSE 8080
 # Run the application
-CMD ["java", "-jar", "course-service.jar"]
+CMD ["java", "-jar", "*.jar"]
