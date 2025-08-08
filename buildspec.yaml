@@ -4,7 +4,6 @@ phases:
   install:
     runtime-versions:
       java: corretto17
-      docker: 20
     commands:
       - echo Installing Maven...
       - yum install -y maven
@@ -36,4 +35,11 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - export DOCKER_CONTAINER_NAME=springboot-course-service-repo
-      - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTA_
+      - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - echo Printing imagedefinitions.json:
+      - cat imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
+    - target/course-service.jar
