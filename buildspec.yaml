@@ -3,7 +3,7 @@
       phases:
         pre_build:
           commands:
-            - mvn clean install
+            - mvn clean package
             - echo Logging in to Amazon ECR...
             - aws --version
             - REPOSITORY_URI=448214416344.dkr.ecr.eu-west-2.amazonaws.com/springboot-course-service-repo
