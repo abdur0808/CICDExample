@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
+      - echo "✅ This is the updated buildspec.yaml being used"
       - echo Installing Maven...
       - yum install -y maven
 
