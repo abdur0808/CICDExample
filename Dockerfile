@@ -5,7 +5,7 @@ FROM openjdk:17
 WORKDIR /app
 
 # Copy compiled Java app or source and jar
-COPY ./targer/*.jar /app
+COPY ./target/*.jar /app
 
 # expose the port where spring boot app run
 EXPOSE 8080
